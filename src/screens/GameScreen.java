@@ -5,12 +5,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import control.MainWindowControl;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import model.Bullet;
 import model.Enemy;
 import model.Player;
@@ -74,32 +73,33 @@ public class GameScreen extends BaseScreen {
 			enemies.get(i).paint(enemySelect);
 		}
 
-		// Calcular distancia
 		for (int i = 0; i < enemies.size(); i++) {
 			for (int j = 0; j < bullets.size(); j++) {
 
-				// Comparar
 				Enemy b = enemies.get(i);
 				Bullet p = bullets.get(j);
 				double D = Math.sqrt(Math.pow(b.getX() - p.getX(), 2) + Math.pow(b.getY() - p.getY(), 2));
 
-				if (D <= 40) {
+				if (D <= 55) {
 					Enemy deadEnemy = enemies.remove(i);
 					deadEnemy.setAlive(false);
 					bullets.remove(j);
+					player.setPuntaje(player.getPuntaje() + 100);
+					if (enemies.size() == 0) {
+						MainWindowControl.SCREEN = (MainWindowControl.SCREEN + 2);
+					}
 					return;
 				}
 			}
 		}
-		// Calcular distancia
+
 		for (int i = 0; i < enemies.size(); i++) {
 
-			// Comparar
 			Enemy b = enemies.get(i);
 
 			double prox = Math.sqrt(Math.pow(b.getX() - player.getX(), 2) + Math.pow(b.getY() - player.getY(), 2));
-			if (prox <= 40) {
-				return;	
+			if (prox <= 60) {
+				MainWindowControl.SCREEN = (MainWindowControl.SCREEN + 1) % 2;
 			}
 		}
 

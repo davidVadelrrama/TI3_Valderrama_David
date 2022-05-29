@@ -25,8 +25,11 @@ public class Player {
 	private int state=0;
 	private int frame=0;
 	
+	public static int puntaje;
+	
 	public Player(Canvas canvas) {
 		this.canvas = canvas;
+		puntaje = 0;
 		gc = canvas.getGraphicsContext2D();
 		File file = new File("src/image/playerShip (1).png");
 		try {
@@ -74,5 +77,17 @@ public class Player {
 		this.state = state;
 		this.frame=0;
 	}
+
+
+	public int getPuntaje() {
+		return puntaje;
+	}
+
+
+	public void setPuntaje(int puntaje) {
+		this.puntaje = puntaje;
+	}
+	
+	
 	
 }

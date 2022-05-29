@@ -3,6 +3,7 @@ package screens;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -12,19 +13,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import model.Player;
 
-public class FinishScreen extends BaseScreen {
+public class WinScreen extends BaseScreen {
 
 	
 	private Image image;
 	private GraphicsContext gc;
-
-	public FinishScreen(Canvas canvas) {
+	
+	public WinScreen(Canvas canvas) {
 		super(canvas);
 		gc = canvas.getGraphicsContext2D();
-		File background = new File("src/image/background (1).png");
+		File file = new File("src/image/background (1).png");
 		try {
-			image = new Image(new FileInputStream(background));
+			image = new Image(new FileInputStream(file));
 		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -35,7 +37,7 @@ public class FinishScreen extends BaseScreen {
 		
 		gc.setFont(new Font("Berlin Sans FB", 50));
 		gc.setFill(Color.YELLOW);
-		gc.fillText("YOU LOST", 150, 50);
+		gc.fillText("YOU WON", 150, 50);
 
 		gc.setFont(new Font("Berlin Sans FB", 30));
 		gc.fillText("Su puntaje es", 155, 150);
@@ -46,7 +48,7 @@ public class FinishScreen extends BaseScreen {
 		
 		gc.setFill(Color.YELLOW);
 		gc.fillText("Press *esc* to exit game", 155, 210);
-
+		
 	}
 
 	@Override
@@ -54,6 +56,7 @@ public class FinishScreen extends BaseScreen {
 		if (e.getCode().equals(KeyCode.ESCAPE)) {
 			System.exit(0);
 		}
+		
 	}
 
 }

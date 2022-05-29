@@ -10,7 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import screens.BaseScreen;
+import screens.FinishScreen;
 import screens.GameScreen;
+import screens.WinScreen;
 
 
 
@@ -30,6 +32,7 @@ public class MainWindowControl implements Initializable{
 		
 		screens.add(new GameScreen(canvas));
 		screens.add(new FinishScreen(canvas));
+		screens.add(new WinScreen(canvas));
 	
 	
 		gc = canvas.getGraphicsContext2D();
@@ -66,7 +69,6 @@ public class MainWindowControl implements Initializable{
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
