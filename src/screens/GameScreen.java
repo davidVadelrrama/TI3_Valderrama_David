@@ -16,7 +16,7 @@ import model.Player;
 
 public class GameScreen extends BaseScreen {
 
-	private int enemyNum = 15;
+	private int enemyNum = 4;
 	private Player player;
 	private ArrayList<Bullet> bullets;
 	private ArrayList<Enemy> enemies;
